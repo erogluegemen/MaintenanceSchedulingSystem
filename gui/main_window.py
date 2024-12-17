@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from PIL import Image, ImageTk
+
+from gui.dashboard import Dashboard
 from gui.task_management import TaskManagement
 from gui.report_generation import ReportGeneration
 from gui.machine_management import MachineManagement
@@ -20,6 +23,7 @@ class MainWindow:
                 "btn_manage_tasks": "Manage Tasks",
                 "btn_view_history": "View Maintenance History",
                 "btn_generate_reports": "Generate Reports",
+                "btn_dashboard": "Dashboard",
                 "language_label": "Select Language:"
             },
             "tr": {
@@ -28,6 +32,7 @@ class MainWindow:
                 "btn_manage_tasks": "Bakım Görevlerini Yönet",
                 "btn_view_history": "Bakım Geçmişini Görüntüle",
                 "btn_generate_reports": "Rapor Oluştur",
+                "btn_dashboard": "Dashboard",
                 "language_label": "Dil Seçiniz:"
             }
         }
@@ -35,6 +40,11 @@ class MainWindow:
         self.title_label = tk.Label(root, text=self.translations["en"]["title"], font=("Arial", 24))
         self.title_label.pack(pady=10)
 
+        image = Image.open("assets/icon.png")
+        self.image = ImageTk.PhotoImage(image)
+        img_label = tk.Label(self.root, image=self.image)
+        img_label.pack(pady=10)
+        
         self.nav_frame = ttk.Frame(root)
         self.nav_frame.pack(pady=20)
 
@@ -53,6 +63,9 @@ class MainWindow:
         self.btn_reports = ttk.Button(self.nav_frame, text=self.translations["en"]["btn_generate_reports"],
                                       command=self.open_report_generation)
         self.btn_reports.grid(row=1, column=0, padx=10)
+
+        btn_dashboard = ttk.Button(self.nav_frame, text=self.translations["en"]["btn_dashboard"], command=self.open_dashboard)
+        btn_dashboard.grid(row=1, column=1, padx=10)
 
         lang_frame = ttk.Frame(root)
         lang_frame.place(relx=0.95, rely=0.95, anchor="se")  
@@ -87,3 +100,6 @@ class MainWindow:
 
     def open_report_generation(self):
         ReportGeneration(self.root)
+    
+    def open_dashboard(self):
+        Dashboard(self.root)

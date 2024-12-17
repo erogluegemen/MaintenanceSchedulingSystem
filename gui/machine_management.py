@@ -1,7 +1,8 @@
 import sqlite3
 import tkinter as tk
+from tkinter import PhotoImage
+from PIL import Image, ImageTk
 from tkinter import ttk, messagebox
-
 
 class MachineManagement:
     def __init__(self, root):
@@ -9,6 +10,8 @@ class MachineManagement:
         self.window.title("Manage Machines")
         self.window.geometry("600x400")
         self.window.resizable(False, False)
+        p1 = PhotoImage(file = 'assets/icon.png') 
+        root.iconphoto(False, p1) 
 
         ttk.Label(self.window, text="Manage Machines", font=("Arial", 18)).grid(row=0, column=0, columnspan=2, pady=10)
 

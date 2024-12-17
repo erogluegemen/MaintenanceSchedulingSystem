@@ -27,7 +27,8 @@ class Login:
         password = self.password_entry.get().strip()
 
         if not username or not password:
-            messagebox.showwarning("Validation Error", "Please fill in all fields!")
+            messagebox.showwarning("Validation Error", 
+                                   "Please fill in all fields!")
             return
 
         conn = sqlite3.connect('maintenance.db')
