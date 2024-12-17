@@ -1,0 +1,4 @@
+tkinter
+sqlite3
+matplotlib==3.7.2
+Pillow==9.4.0
